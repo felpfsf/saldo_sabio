@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_icons.dart';
+import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_buttom.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/ssd_sb_form_field.dart';
@@ -27,6 +29,15 @@ class ShowcaseComponentsPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               const Text(
+                'Selector',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.amber,
+                ),
+              ),
+              const TestSelector(),
+              const SizedBox(height: 20),
+              const Text(
                 'Input',
                 style: TextStyle(
                   fontSize: 18,
@@ -34,8 +45,12 @@ class ShowcaseComponentsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              SaldoSabioFormField(
-                label: 'Label',
+              Column(
+                children: [
+                  SaldoSabioFormField(
+                    label: 'Label',
+                  ),
+                ],
               ),
               const SizedBox(height: 20),
               const Text(
@@ -119,6 +134,61 @@ class ShowcaseComponentsPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class TestSelector extends StatefulWidget {
+  const TestSelector({super.key});
+
+  @override
+  State<TestSelector> createState() => _TestSelectorState();
+}
+
+class _TestSelectorState extends State<TestSelector> {
+  String _selectedValue = 'Option 1';
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: SdSbSelector<String>(
+                value: 'Option 1',
+                groupValue: _selectedValue,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedValue = value;
+                  });
+                },
+                label: 'Entrada',
+                selectorType: SelectorType.income,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: SdSbSelector<String>(
+                value: 'Option 2',
+                groupValue: _selectedValue,
+                onChanged: (value) {
+                  setState(() {
+                    _selectedValue = value;
+                  });
+                },
+                label: 'Saída',
+                selectorType: SelectorType.expense,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
+        Text(
+          'Selected Value: $_selectedValue',
+          style: SaldoSabioTheme.textBase,
+        ),
+      ],
     );
   }
 }
