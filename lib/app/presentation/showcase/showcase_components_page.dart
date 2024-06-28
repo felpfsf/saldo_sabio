@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_buttom.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
@@ -129,7 +130,20 @@ class ShowcaseComponentsPage extends StatelessWidget {
                     transactionType: TransactionType.expense,
                   ),
                 ],
-              )
+              ),
+              // Loader
+              const SizedBox(height: 20),
+              const Text(
+                'Loader',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.amber,
+                ),
+              ),
+              const SizedBox(height: 20),
+              Center(
+                child: SdSbLoader(),
+              ),
             ],
           ),
         ),
