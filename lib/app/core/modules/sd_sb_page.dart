@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-class SaldoSabioPage extends StatelessWidget {
+class SdSbPage extends StatelessWidget {
   final List<SingleChildWidget>? _bindings;
   final WidgetBuilder _page;
 
-  const SaldoSabioPage({
+  const SdSbPage({
     super.key,
     List<SingleChildWidget>? bindings,
     required WidgetBuilder page,

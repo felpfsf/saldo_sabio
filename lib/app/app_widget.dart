@@ -1,9 +1,10 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:saldo_sabio/app/core/database/sql_adm_connection.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/presentation/home/home_module.dart';
-import 'package:saldo_sabio/app/presentation/showcase/components_showcase_page.dart';
+import 'package:saldo_sabio/app/presentation/showcase/showcase_components_page.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -13,6 +14,20 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  final sqlAdmConnection = SqlAdmConnection();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(sqlAdmConnection);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(sqlAdmConnection);
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return AsyncStateBuilder(

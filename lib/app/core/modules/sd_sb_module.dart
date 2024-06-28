@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:saldo_sabio/app/core/modules/saldo_sabio_page.dart';
+import 'package:saldo_sabio/app/core/modules/sd_sb_page.dart';
 
-abstract class SaldoSabioModule {
+abstract class SdSbModule {
   final Map<String, WidgetBuilder> _routers;
   final List<SingleChildWidget>? _bindings;
 
-  SaldoSabioModule({
+  SdSbModule({
     List<SingleChildWidget>? bindings,
     required Map<String, WidgetBuilder> routers,
   })  : _bindings = bindings ?? [],
@@ -16,7 +16,7 @@ abstract class SaldoSabioModule {
     return _routers.map(
       (key, pageBuilder) => MapEntry(
         key,
-        (_) => SaldoSabioPage(
+        (_) => SdSbPage(
           bindings: _bindings,
           page: pageBuilder,
         ),
@@ -31,6 +31,6 @@ abstract class SaldoSabioModule {
       throw Exception('Route $path not found');
     }
 
-    return SaldoSabioPage(page: widgetBuilder, bindings: _bindings);
+    return SdSbPage(page: widgetBuilder, bindings: _bindings);
   }
 }

@@ -11,8 +11,8 @@ class SplashPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Hello World!'),
-          Text('data'),
+          Text('Saldo Sábio'),
+          Text('Aguarde...'),
         ],
       ),
     );
