@@ -4,7 +4,10 @@ import 'package:saldo_sabio/app/core/database/sql_adm_connection.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/presentation/home/home_module.dart';
+// ignore: unused_import
 import 'package:saldo_sabio/app/presentation/showcase/showcase_components_page.dart';
+import 'package:saldo_sabio/app/presentation/showcase/showcase_module.dart';
+import 'package:saldo_sabio/app/presentation/splash/splash_screen.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
@@ -37,8 +40,10 @@ class _AppWidgetState extends State<AppWidget> {
           theme: SaldoSabioTheme.themeData,
           navigatorObservers: [navigatorObserver],
           title: 'Saldo Sábio',
-          home: const ShowcaseComponentsPage(),
+          // home: const ShowcaseComponentsPage(),
+          home: const SplashPage(),
           routes: {
+            ...ShowcaseModule().routers,
             ...HomeModule().routers,
           },
         );

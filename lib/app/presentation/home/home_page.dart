@@ -9,7 +9,11 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home'),
       ),
-      body: Container(),
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: const Text('Home',
+            style: TextStyle(fontSize: 30, color: Colors.white)),
+      ),
     );
   }
 }
