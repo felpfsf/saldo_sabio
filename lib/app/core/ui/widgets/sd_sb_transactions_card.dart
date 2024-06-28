@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_colors.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_icons.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_theme.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 
 enum TransactionType { expense, income }
 
@@ -29,12 +29,12 @@ class SdSbTransactionsCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: const BorderSide(
-          color: SaldoSabioThemeColors.gray2,
+          color: SdSbThemeColors.gray2,
           width: 1,
         ),
       ),
       contentPadding: const EdgeInsets.all(20),
-      tileColor: SaldoSabioThemeColors.gray3,
+      tileColor: SdSbThemeColors.gray3,
       title: Padding(
         padding: const EdgeInsets.only(bottom: 12),
         child: Column(
@@ -49,8 +49,8 @@ class SdSbTransactionsCard extends StatelessWidget {
               isExpense ? '- $amount' : amount,
               style: SaldoSabioTheme.textXlBold.copyWith(
                 color: isExpense
-                    ? SaldoSabioThemeColors.red
-                    : SaldoSabioThemeColors.green,
+                    ? SdSbThemeColors.red
+                    : SdSbThemeColors.green,
               ),
             )
           ],
@@ -61,7 +61,7 @@ class SdSbTransactionsCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Icon(SaldoSabioIcons.tag, size: 16),
+              const Icon(SdSbIcons.tag, size: 16),
               const SizedBox(width: 8),
               Text(category, style: SaldoSabioTheme.textPlaceholder),
             ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_colors.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_icons.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_theme.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 
 enum SelectorType { income, expense }
 
@@ -24,25 +24,24 @@ class SdSbSelector<T> extends StatelessWidget {
   bool get isSelected => value == groupValue;
 
   Color get bgColor =>
-      isSelected ? SaldoSabioThemeColors.green : SaldoSabioThemeColors.gray3;
+      isSelected ? SdSbThemeColors.green : SdSbThemeColors.gray3;
 
   Color get iconColor => isSelected
-      ? SaldoSabioThemeColors.white
+      ? SdSbThemeColors.white
       : selectorType == SelectorType.income
-          ? SaldoSabioThemeColors.green
-          : SaldoSabioThemeColors.red;
+          ? SdSbThemeColors.green
+          : SdSbThemeColors.red;
 
-  Color get textColor => isSelected
-      ? SaldoSabioThemeColors.white
-      : SaldoSabioTheme.textBase.color!;
+  Color get textColor =>
+      isSelected ? SdSbThemeColors.white : SaldoSabioTheme.textBase.color!;
 
   IconData get iconData => selectorType == SelectorType.income
-      ? SaldoSabioIcons.arrowCircleUp
-      : SaldoSabioIcons.arrowCircleDown;
+      ? SdSbIcons.arrowCircleUp
+      : SdSbIcons.arrowCircleDown;
 
   Color get splashColor => selectorType == SelectorType.income
-      ? SaldoSabioThemeColors.green.withOpacity(0.3)
-      : SaldoSabioThemeColors.red.withOpacity(0.3);
+      ? SdSbThemeColors.green.withOpacity(0.3)
+      : SdSbThemeColors.red.withOpacity(0.3);
 
   @override
   Widget build(BuildContext context) {
@@ -78,14 +77,14 @@ class SdSbSelector<T> extends StatelessWidget {
 //   onPressed: () {},
 //   style: ElevatedButton.styleFrom(
 //     padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-//     backgroundColor: SaldoSabioThemeColors.gray3,
+//     backgroundColor: SdSbThemeColors.gray3,
 //   ),
 //   child: const Row(
 //     mainAxisAlignment: MainAxisAlignment.center,
 //     children: [
 //       Icon(
-//         SaldoSabioIcons.arrowCircleUp,
-//         color: SaldoSabioThemeColors.green,
+//         SdSbIcons.arrowCircleUp,
+//         color: SdSbThemeColors.green,
 //       ),
 //       SizedBox(width: 8),
 //       Text(

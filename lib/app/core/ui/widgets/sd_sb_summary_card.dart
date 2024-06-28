@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_colors.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_icons.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_theme.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 
 enum SummaryType { expense, income, total }
 
@@ -36,61 +36,61 @@ class SdSbSummaryCard extends StatelessWidget {
   IconData get icon {
     switch (summaryType) {
       case SummaryType.income:
-        return SaldoSabioIcons.arrowCircleUp;
+        return SdSbIcons.arrowCircleUp;
       case SummaryType.expense:
-        return SaldoSabioIcons.arrowCircleDown;
+        return SdSbIcons.arrowCircleDown;
       default:
-        return SaldoSabioIcons.dollarSign;
+        return SdSbIcons.dollarSign;
     }
   }
 
   Color get iconColor {
     switch (summaryType) {
       case SummaryType.income:
-        return SaldoSabioThemeColors.green;
+        return SdSbThemeColors.green;
       case SummaryType.expense:
-        return SaldoSabioThemeColors.red;
+        return SdSbThemeColors.red;
       case SummaryType.total:
-        return SaldoSabioThemeColors.white;
+        return SdSbThemeColors.white;
       default:
-        return SaldoSabioThemeColors.white;
+        return SdSbThemeColors.white;
     }
   }
 
   Color get titleColor {
     switch (summaryType) {
       case SummaryType.total:
-        return SaldoSabioThemeColors.white;
+        return SdSbThemeColors.white;
       case SummaryType.income:
-        return SaldoSabioThemeColors.green;
+        return SdSbThemeColors.green;
       case SummaryType.expense:
-        return SaldoSabioThemeColors.red;
+        return SdSbThemeColors.red;
       default:
-        return SaldoSabioThemeColors.white;
+        return SdSbThemeColors.white;
     }
   }
 
   Color? get lastEntryColor {
     switch (summaryType) {
       case SummaryType.total:
-        return SaldoSabioThemeColors.gray6;
+        return SdSbThemeColors.gray6;
       case SummaryType.income:
       case SummaryType.expense:
         return null;
       default:
-        return SaldoSabioThemeColors.white;
+        return SdSbThemeColors.white;
     }
   }
 
   Color get bgColor {
     switch (summaryType) {
       case SummaryType.total:
-        return SaldoSabioThemeColors.green;
+        return SdSbThemeColors.green;
       case SummaryType.income:
       case SummaryType.expense:
-        return SaldoSabioThemeColors.gray3;
+        return SdSbThemeColors.gray3;
       default:
-        return SaldoSabioThemeColors.gray3;
+        return SdSbThemeColors.gray3;
     }
   }
 
@@ -100,7 +100,7 @@ class SdSbSummaryCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: const BorderSide(
-          color: SaldoSabioThemeColors.gray2,
+          color: SdSbThemeColors.gray2,
           width: 1,
         ),
       ),

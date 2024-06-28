@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_icons.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_theme.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_buttom.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
@@ -77,7 +77,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   SaldoSabioButtom(
                     width: 48,
                     height: 48,
-                    icon: const Icon(SaldoSabioIcons.search),
+                    icon: const Icon(SdSbIcons.search),
                     onPressed: () {},
                     buttonType: ButtonType.outlined,
                   ),

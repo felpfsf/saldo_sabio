@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SaldoSabioThemeColors {
+class SdSbThemeColors {
   static const greenDark = Color(0xFF015F43); // #015F43
   static const green = Color(0xFF00875F); // #00875F
   static const greenLight = Color(0xFF00B37E); // #00B37E

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/helpers/unfocus_form_helper.dart';
-import 'package:saldo_sabio/app/core/ui/theme/saldo_sabio_colors.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 
 class SaldoSabioFormField extends StatelessWidget {
   final String label;
@@ -53,7 +53,7 @@ class SaldoSabioFormField extends StatelessWidget {
                               ? Icons.visibility
                               : Icons.visibility_off,
                         ),
-                        color: SaldoSabioThemeColors.gray6,
+                        color: SdSbThemeColors.gray6,
                         iconSize: 14,
                       )
                     : null),
