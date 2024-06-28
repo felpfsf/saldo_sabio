@@ -95,6 +95,6 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   fonts:
-    - family: SaldoSabioIcons
+    - family: SdSbIcons
       fonts:
-        - asset: assets/fonts/SaldoSabioIcons.ttf
+        - asset: assets/fonts/SdSbIcons.ttf
