@@ -34,7 +34,7 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     return AsyncStateBuilder(
-      loader: SdSbLoader(),
+      customLoader: const SdSbLoader(),
       builder: (navigatorObserver) {
         return MaterialApp(
           theme: SaldoSabioTheme.themeData,
