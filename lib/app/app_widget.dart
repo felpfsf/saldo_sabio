@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/presentation/home/home_module.dart';
-import 'package:saldo_sabio/app/presentation/home/home_page.dart';
 import 'package:saldo_sabio/app/presentation/showcase/components_showcase_page.dart';
-import 'package:saldo_sabio/app/presentation/splash/splash_screen.dart';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
