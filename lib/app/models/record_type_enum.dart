@@ -1,0 +1,4 @@
+enum RecordTypeEnum {
+  expense,
+  income,
+}
