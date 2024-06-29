@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "981498088454",
+    "project_id": "saldo-sabio",
+    "storage_bucket": "saldo-sabio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981498088454:android:ee96775ffb5d9581b34787",
+        "android_client_info": {
+          "package_name": "br.com.etherealcodes.saldo_sabio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981498088454-r92r5ejj7faqjvt0utu99rh5ujb0kphk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqa_MF-qbtknnFhgMvFqNMS0E-dDY9q4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981498088454-r92r5ejj7faqjvt0utu99rh5ujb0kphk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981498088454:android:97eeaac948ee03f8b34787",
+        "android_client_info": {
+          "package_name": "br.com.etherealcodes.saldo_sabio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "981498088454-ehocsmb2onlgl3tjehl54vm2n3jgu5dt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.etherealcodes.saldo_sabio",
+            "certificate_hash": "507689d579c8c41e79b9ef4e6ff61924d1719261"
+          }
+        },
+        {
+          "client_id": "981498088454-r92r5ejj7faqjvt0utu99rh5ujb0kphk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqa_MF-qbtknnFhgMvFqNMS0E-dDY9q4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981498088454-r92r5ejj7faqjvt0utu99rh5ujb0kphk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
