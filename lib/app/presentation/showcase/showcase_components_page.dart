@@ -3,6 +3,7 @@ import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_buttom.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_logo.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
@@ -28,6 +29,20 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
+              // Logo
+              const SizedBox(height: 20),
+              const Text(
+                'Logo',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.amber,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Center(
+                child: SdSbLogo(),
+              ),
+              // Selector
               const SizedBox(height: 20),
               const Text(
                 'Selector',
@@ -53,6 +68,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   ),
                 ],
               ),
+              // Buttons
               const SizedBox(height: 20),
               const Text(
                 'Buttons',
@@ -84,6 +100,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   ),
                 ],
               ),
+              // Cards
               const SizedBox(height: 20),
               const Text(
                 'Cards',
@@ -141,7 +158,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Center(
+              const Center(
                 child: SdSbLoader(),
               ),
             ],
