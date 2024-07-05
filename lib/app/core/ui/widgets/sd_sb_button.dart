@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 enum ButtonType { elevate, outlined }
 
-class SaldoSabioButtom extends StatelessWidget {
+class SdSbButton extends StatelessWidget {
   final String? label;
   final Icon? icon;
   final VoidCallback onPressed;
@@ -11,7 +11,7 @@ class SaldoSabioButtom extends StatelessWidget {
   final double? width;
   final double? height;
 
-  const SaldoSabioButtom({
+  const SdSbButton({
     super.key,
     this.label,
     this.icon,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/helpers/unfocus_form_helper.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
+import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 
-class SaldoSabioFormField extends StatelessWidget {
+class SdSbFormField extends StatelessWidget {
   final String label;
   final String? hintText;
   final IconButton? iconButton;
@@ -13,7 +14,7 @@ class SaldoSabioFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final FormFieldValidator<String>? validator;
 
-  SaldoSabioFormField({
+  SdSbFormField({
     super.key,
     required this.label,
     this.hintText,
@@ -31,6 +32,10 @@ class SaldoSabioFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void obscureTextChange() {
+      obscureTextNotifier.value = !obscureTextNotifier.value;
+    }
+
     return ValueListenableBuilder<bool>(
       valueListenable: obscureTextNotifier,
       builder: (context, obscureTextValue, child) {
@@ -47,7 +52,7 @@ class SaldoSabioFormField extends StatelessWidget {
             suffixIcon: iconButton ??
                 (obscureText == true
                     ? IconButton(
-                        onPressed: () {},
+                        onPressed: obscureTextChange,
                         icon: Icon(
                           obscureTextNotifier.value
                               ? Icons.visibility
@@ -57,6 +62,9 @@ class SaldoSabioFormField extends StatelessWidget {
                         iconSize: 14,
                       )
                     : null),
+          ),
+          style: SaldoSabioTheme.textSmRegular.copyWith(
+            color: SdSbThemeColors.white,
           ),
         );
       },

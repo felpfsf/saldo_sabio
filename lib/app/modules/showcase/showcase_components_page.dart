@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
-import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_buttom.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_logo.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
-import 'package:saldo_sabio/app/core/ui/widgets/ssd_sb_form_field.dart';
 
 class ShowcaseComponentsPage extends StatelessWidget {
   const ShowcaseComponentsPage({super.key});
@@ -63,7 +63,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  SaldoSabioFormField(
+                  SdSbFormField(
                     label: 'Label',
                   ),
                 ],
@@ -80,18 +80,18 @@ class ShowcaseComponentsPage extends StatelessWidget {
               const SizedBox(height: 20),
               Column(
                 children: [
-                  SaldoSabioButtom(
+                  SdSbButton(
                     label: 'Elevated Button',
                     onPressed: () {},
                   ),
                   const SizedBox(height: 20),
-                  SaldoSabioButtom(
+                  SdSbButton(
                     label: 'Outilined Button',
                     onPressed: () {},
                     buttonType: ButtonType.outlined,
                   ),
                   const SizedBox(height: 20),
-                  SaldoSabioButtom(
+                  SdSbButton(
                     width: 48,
                     height: 48,
                     icon: const Icon(SdSbIcons.search),
