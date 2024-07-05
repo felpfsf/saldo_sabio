@@ -1,29 +1,27 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:saldo_sabio/app/repositories/user/user_repository.dart';
 
 import './user_service.dart';
 
 class UserServiceImpl implements UserService {
-  @override
-  Future<User?> googleProviderSignIn() {
-    // TODO: implement googleSignIn
-    throw UnimplementedError();
-  }
+  final UserRepository _userRepository;
+
+  UserServiceImpl({
+    required UserRepository userRepository,
+  }) : _userRepository = userRepository;
 
   @override
-  Future<User?> login(String email, String password) {
-    // TODO: implement login
-    throw UnimplementedError();
-  }
+  Future<User?> googleProviderSignIn() =>
+      _userRepository.googleProviderSignIn();
 
   @override
-  Future<void> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
+  Future<User?> login(String email, String password) =>
+      _userRepository.login(email, password);
 
   @override
-  Future<User?> register(String email, String password) {
-    // TODO: implement register
-    throw UnimplementedError();
-  }
+  Future<void> logout() => _userRepository.logout();
+
+  @override
+  Future<User?> register(String email, String password) =>
+      _userRepository.register(email, password);
 }
