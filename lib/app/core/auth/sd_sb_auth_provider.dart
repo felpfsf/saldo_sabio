@@ -20,15 +20,11 @@ class SdSbAuthProvider extends ChangeNotifier {
     _auth.userChanges().listen((_) => notifyListeners());
     _auth.authStateChanges().listen((user) {
       if (user != null) {
-        print('user logged in');
-        // redirect to home page
         SdobNavGlobalKey.navKey.currentState?.pushNamedAndRemoveUntil(
-          '/',
+          '/home',
           (route) => false,
         );
       } else {
-        print('user logged out');
-        // redirect to login page
         SdobNavGlobalKey.navKey.currentState?.pushNamedAndRemoveUntil(
           '/login',
           (route) => false,
