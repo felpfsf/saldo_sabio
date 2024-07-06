@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:saldo_sabio/app/core/auth/sd_sb_auth_provider.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_appbar.dart';
+import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_drawer.dart';
+import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,23 +15,40 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
+      appBar: SdSbAppBar(
+        showLeading: false,
+        actions: [
+          PopupMenuButton(
+            icon: const Icon(Icons.more_vert),
+            itemBuilder: (_) => [
+              PopupMenuItem(
+                child: Text('data'),
+              ),
+            ],
+          ),
+        ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            IconButton(
-              onPressed: () => _logout(context),
-              icon: const Icon(Icons.logout),
+      drawer: const SdSbDrawer(),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: constraints.maxHeight,
+                minWidth: constraints.maxWidth,
+              ),
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 20),
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SdSbHomeHeader(),
+                  ],
+                ),
+              ),
             ),
-            const Text(
-              'Home',
-              style: TextStyle(fontSize: 30, color: Colors.white),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
