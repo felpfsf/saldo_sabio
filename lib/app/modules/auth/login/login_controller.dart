@@ -47,10 +47,11 @@ class LoginController extends SdSbChangeNotifier {
         success();
       } else {
         _userService.logout();
-        setError('❌ Erro ao fazer login com o Google');
+        // setError('❌ Erro ao fazer login com o Google');
       }
     } on AuthException catch (e, s) {
       log('❌ Error: $e', stackTrace: s);
+
       _userService.logout();
       setError(e.message);
     } finally {

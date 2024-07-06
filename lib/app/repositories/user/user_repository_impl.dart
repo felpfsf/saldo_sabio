@@ -20,23 +20,23 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<User?> googleProviderSignIn() async {
-    final googleSignIn = GoogleSignIn();
-    final user = await googleSignIn.signIn();
-
-    if (user == null) {
-      throw AuthError(message: '❌ Usuário não cadastrado');
-    }
-
-    final googleAuth = await user.authentication;
-
-    final fbCredential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    var userCredential = await _auth.signInWithCredential(fbCredential);
-
     try {
+      final googleSignIn = GoogleSignIn();
+      final user = await googleSignIn.signIn();
+
+      if (user == null) {
+        // throw AuthError(message: '❌ Usuário não cadastrado');
+        return null;
+      }
+
+      final googleAuth = await user.authentication;
+
+      final fbCredential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      var userCredential = await _auth.signInWithCredential(fbCredential);
       return userCredential.user;
     } on FirebaseAuthException catch (e, s) {
       log('❌ Erro ao fazer login com o google', error: e, stackTrace: s);
@@ -46,6 +46,7 @@ class UserRepositoryImpl implements UserRepository {
           message: '❌ Usuário já cadastrado com outra conta - ${e.message}',
         );
       }
+
       throw AuthError(
         message: e.message ?? '❌ Erro ao fazer login com o google',
       );
