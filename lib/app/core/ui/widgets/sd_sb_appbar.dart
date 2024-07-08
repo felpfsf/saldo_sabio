@@ -5,19 +5,16 @@ class SdSbAppBar extends AppBar {
   SdSbAppBar({
     super.key,
     String? title,
-    List<Widget>? actions,
-    Color backgroundColor = Colors.transparent,
-    Color shadowColor = SdSbThemeColors.gray6,
-    double elevation = 0,
+    super.actions,
+    Color super.backgroundColor = Colors.transparent,
+    Color super.shadowColor = SdSbThemeColors.gray6,
+    double super.elevation = 0,
     VoidCallback? onLeadingPressed,
     bool showLeading = true,
   }) : super(
-          actions: actions,
+          scrolledUnderElevation: 0,
           title: title != null ? SdSbAppbarTitle(title: title) : null,
           iconTheme: const IconThemeData(color: SdSbThemeColors.white),
-          backgroundColor: backgroundColor,
-          elevation: elevation,
-          shadowColor: shadowColor,
           leading: showLeading
               ? IconButton(
                   onPressed: onLeadingPressed ?? () {},

@@ -13,7 +13,10 @@ sealed class SaldoSabioTheme {
   );
 
   static ThemeData themeData = ThemeData(
-    textTheme: _robotoFF,
+    textTheme: _robotoFF.apply(
+      bodyColor: SdSbThemeColors.gray6,
+      displayColor: SdSbThemeColors.gray6,
+    ),
     //
     scaffoldBackgroundColor: SdSbThemeColors.gray2,
     //

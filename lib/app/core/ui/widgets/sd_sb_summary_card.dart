@@ -3,8 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
-
-enum SummaryType { expense, income, total }
+import 'package:saldo_sabio/app/models/summary_type.dart';
 
 class SdSbSummaryCard extends StatelessWidget {
   final DateTime lastEntry;
@@ -96,7 +95,7 @@ class SdSbSummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
+    return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
         side: const BorderSide(
@@ -104,36 +103,54 @@ class SdSbSummaryCard extends StatelessWidget {
           width: 1,
         ),
       ),
-      contentPadding: const EdgeInsets.all(20),
-      titleAlignment: ListTileTitleAlignment.top,
-      tileColor: bgColor,
-      title: Text(
-        title,
-        style: SaldoSabioTheme.textBase.copyWith(color: titleColor),
-      ),
-      subtitle: Padding(
-        padding: const EdgeInsets.only(top: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(totalAmount, style: SaldoSabioTheme.textXlBold),
-            Visibility(
-              visible: summaryType != SummaryType.total,
-              child: Text(
-                'Última atualização em ${dateFormat.format(lastEntry)}',
-                style: SaldoSabioTheme.textSmRegular.copyWith(
-                  color: lastEntryColor,
+      color: bgColor,
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        // TODO: Set up a callback to change bg color, icon color and text color OR change border color based on the summary type
+        onTap: () {},
+        // TODO: Change splash color based on the summary type
+        splashColor: Colors.amber,
+        child: SizedBox(
+          height: 150,
+          width: 280,
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title,
+                      style:
+                          SaldoSabioTheme.textBase.copyWith(color: titleColor),
+                    ),
+                    Icon(
+                      icon,
+                      size: 24,
+                      color: iconColor,
+                    )
+                  ],
                 ),
-              ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Text(totalAmount, style: SaldoSabioTheme.textXlBold),
+                Visibility(
+                  visible: summaryType != SummaryType.total,
+                  child: Text(
+                    'Última atualização em ${dateFormat.format(lastEntry)}',
+                    style: SaldoSabioTheme.textSmRegular.copyWith(
+                      color: lastEntryColor,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-      minVerticalPadding: 10,
-      trailing: Icon(
-        icon,
-        size: 32,
-        color: iconColor,
       ),
     );
   }
