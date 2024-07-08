@@ -1,4 +1,5 @@
 import 'package:saldo_sabio/app/models/category_model.dart';
+import 'package:saldo_sabio/app/models/record_type_enum.dart';
 
 class TransactionModel {
   final int id;
@@ -7,6 +8,7 @@ class TransactionModel {
   final double amount;
   final DateTime date;
   final CategoryModel category;
+  final RecordTypeEnum recordType;
 
   TransactionModel({
     required this.id,
@@ -15,5 +17,6 @@ class TransactionModel {
     required this.amount,
     required this.date,
     required this.category,
+    required this.recordType,
   });
 }
