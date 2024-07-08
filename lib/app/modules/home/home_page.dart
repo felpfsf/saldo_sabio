@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:saldo_sabio/app/core/auth/sd_sb_auth_provider.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_appbar.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_drawer.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_header.dart';
+import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_summary_card_row.dart';
+import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_transactions.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  void _logout(BuildContext context) {
-    context.read<SdSbAuthProvider>().logout();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +17,14 @@ class HomePage extends StatelessWidget {
           PopupMenuButton(
             icon: const Icon(Icons.more_vert),
             itemBuilder: (_) => [
-              PopupMenuItem(
-                child: Text('data'),
+              const PopupMenuItem(
+                child: Text('Mostrar Todas'),
+              ),
+              const PopupMenuItem(
+                child: Text('Mostrar Entradas'),
+              ),
+              const PopupMenuItem(
+                child: Text('Mostrar Saídas'),
               ),
             ],
           ),
@@ -39,11 +41,16 @@ class HomePage extends StatelessWidget {
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SdSbHomeHeader(),
-                  ],
+                child: const IntrinsicHeight(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SdSbHomeHeader(),
+                      SummaryCardRow(),
+                      SizedBox(height: 24),
+                      Transactions(),
+                    ],
+                  ),
                 ),
               ),
             ),

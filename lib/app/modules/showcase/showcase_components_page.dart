@@ -7,7 +7,7 @@ import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_logo.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
-import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
+import 'package:saldo_sabio/app/models/summary_type.dart';
 
 class ShowcaseComponentsPage extends StatelessWidget {
   const ShowcaseComponentsPage({super.key});
@@ -131,21 +131,21 @@ class ShowcaseComponentsPage extends StatelessWidget {
                     summaryType: SummaryType.total,
                   ),
                   const SizedBox(height: 20),
-                  const SdSbTransactionsCard(
-                    amount: 'R\$ 14.000,00',
-                    category: 'Venda',
-                    date: '26/06/2024',
-                    title: 'Desenvolvimento de aplicação',
-                    transactionType: TransactionType.income,
-                  ),
-                  const SizedBox(height: 20),
-                  const SdSbTransactionsCard(
-                    amount: 'R\$ 65,00',
-                    category: 'Alimentação',
-                    date: '26/06/2024',
-                    title: 'Almoço',
-                    transactionType: TransactionType.expense,
-                  ),
+                  // const SdSbTransactionsCard(
+                  //   amount: 14000,
+                  //   category: 'Venda',
+                  //   date: '26/06/2024',
+                  //   title: 'Desenvolvimento de aplicação',
+                  //   transactionType: TransactionType.income,
+                  // ),
+                  // const SizedBox(height: 20),
+                  // const SdSbTransactionsCard(
+                  //   amount: 65,
+                  //   category: 'Alimentação',
+                  //   date: '26/06/2024',
+                  //   title: 'Almoço',
+                  //   transactionType: TransactionType.expense,
+                  // ),
                 ],
               ),
               // Loader
