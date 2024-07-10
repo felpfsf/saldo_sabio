@@ -115,19 +115,19 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   SdSbSummaryCard(
                     lastEntry: DateTime.now(),
-                    totalAmount: 'R\$ 14.000,00',
+                    totalAmount: 141243.21,
                     summaryType: SummaryType.income,
                   ),
                   const SizedBox(height: 20),
                   SdSbSummaryCard(
                     lastEntry: DateTime.now(),
-                    totalAmount: 'R\$ 14.000,00',
+                    totalAmount: 141243.21,
                     summaryType: SummaryType.expense,
                   ),
                   const SizedBox(height: 20),
                   SdSbSummaryCard(
                     lastEntry: DateTime.now(),
-                    totalAmount: 'R\$ 14.000,00',
+                    totalAmount: 141243.21,
                     summaryType: SummaryType.total,
                   ),
                   const SizedBox(height: 20),

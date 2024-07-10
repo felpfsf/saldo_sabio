@@ -13,17 +13,17 @@ class SummaryCardRow extends StatelessWidget {
         children: [
           SdSbSummaryCard(
             lastEntry: DateTime.now(),
-            totalAmount: 'R\$ 14.000,00',
+            totalAmount: 25943.21,
             summaryType: SummaryType.income,
           ),
           SdSbSummaryCard(
             lastEntry: DateTime.now(),
-            totalAmount: 'R\$ 14.000,00',
+            totalAmount: 2574.21,
             summaryType: SummaryType.expense,
           ),
           SdSbSummaryCard(
             lastEntry: DateTime.now(),
-            totalAmount: 'R\$ 14.000,00',
+            totalAmount: 141243.21,
             summaryType: SummaryType.total,
           ),
         ],
