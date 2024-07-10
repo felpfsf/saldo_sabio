@@ -40,3 +40,13 @@ List<TransactionModel> mockedTransactions = [
     recordType: RecordTypeEnum.income,
   ),
 ];
+
+const List<Map<String, dynamic>> mockedCategories = [
+  {'id': 1, 'label': 'Venda'},
+  {'id': 2, 'label': 'Salário'},
+  {'id': 3, 'label': 'Alimentação'},
+  {'id': 4, 'label': 'Lazer'},
+  {'id': 5, 'label': 'Lazer2'},
+  {'id': 6, 'label': 'Lazer3'},
+  {'id': 7, 'label': 'Lazer4'},
+];
