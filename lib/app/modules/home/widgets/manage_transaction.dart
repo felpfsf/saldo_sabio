@@ -8,14 +8,14 @@ import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
 import 'package:saldo_sabio/app/models/record_type_enum.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/mocked_data.dart';
 
-class TransactionForm extends StatefulWidget {
-  const TransactionForm({super.key});
+class ManageTransaction extends StatefulWidget {
+  const ManageTransaction({super.key});
 
   @override
-  State<TransactionForm> createState() => _TransactionFormState();
+  State<ManageTransaction> createState() => _ManageTransactionState();
 }
 
-class _TransactionFormState extends State<TransactionForm> {
+class _ManageTransactionState extends State<ManageTransaction> {
   final formKey = GlobalKey<FormState>();
   final titleEC = TextEditingController();
   final descriptionEC = TextEditingController();
