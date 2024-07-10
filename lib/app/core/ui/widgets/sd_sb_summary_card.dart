@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:saldo_sabio/app/core/ui/helpers/currency_formatter.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
@@ -7,8 +8,9 @@ import 'package:saldo_sabio/app/models/summary_type.dart';
 
 class SdSbSummaryCard extends StatelessWidget {
   final DateTime lastEntry;
-  final String totalAmount;
+  // final String totalAmount;
   final SummaryType summaryType;
+  final double totalAmount;
 
   SdSbSummaryCard({
     super.key,
@@ -137,7 +139,11 @@ class SdSbSummaryCard extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                Text(totalAmount, style: SaldoSabioTheme.textXlBold),
+                Text(
+                  // fo.symbolOnLeft,
+                  formatCurrency(totalAmount),
+                  style: SaldoSabioTheme.textXlBold,
+                ),
                 Visibility(
                   visible: summaryType != SummaryType.total,
                   child: Text(

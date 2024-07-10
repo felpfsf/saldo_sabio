@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:saldo_sabio/app/core/ui/helpers/unfocus_form_helper.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
@@ -14,6 +15,7 @@ class SdSbFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final FormFieldValidator<String>? validator;
   final FloatingLabelBehavior floatingLabelBehavior;
+  final List<TextInputFormatter>? inputFormatter;
 
   SdSbFormField({
     super.key,
@@ -26,6 +28,7 @@ class SdSbFormField extends StatelessWidget {
     this.focusNode,
     this.validator,
     this.floatingLabelBehavior = FloatingLabelBehavior.auto,
+    this.inputFormatter,
   })  : assert(
           obscureText == true ? iconButton == null : true,
           'Icon button must be null if obscure text is true',
@@ -42,6 +45,7 @@ class SdSbFormField extends StatelessWidget {
       valueListenable: obscureTextNotifier,
       builder: (context, obscureTextValue, child) {
         return TextFormField(
+          inputFormatters: inputFormatter,
           keyboardType: keyboardType,
           controller: controller,
           focusNode: focusNode,
