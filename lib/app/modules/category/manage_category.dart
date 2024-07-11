@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:saldo_sabio/app/core/notifier/sd_sb_listener_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
 import 'package:saldo_sabio/app/modules/category/manage_category_controller.dart';
@@ -28,17 +29,30 @@ class _ManageCategoryState extends State<ManageCategory> {
     super.dispose();
   }
 
+  @override
+  void initState() {
+    final sdsbListenerNotifier =
+        SdSbListenerNotifier(sdsbNotifier: widget._controller);
+    sdsbListenerNotifier.listener(
+      context: context,
+      onSuccess: (notifier, listener) {
+        log('Success');
+        listener.dispose();
+        Navigator.of(context).pop();
+      },
+    );
+    super.initState();
+  }
+
   void _saveCategory() {
     final formValid = formKey.currentState?.validate() ?? false;
 
     switch (formValid) {
-      case true:
-        widget._controller.addCategory(titleEC.text);
-        break;
       case false:
-        // Show error message
         log('Formulário inválido');
         break;
+      case true:
+        widget._controller.addCategory(titleEC.text);
     }
   }
 
