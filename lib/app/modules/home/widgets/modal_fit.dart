@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
-import 'package:saldo_sabio/app/modules/home/widgets/manage_transaction.dart';
+import 'package:saldo_sabio/app/modules/category/manage_category_module.dart';
+import 'package:saldo_sabio/app/modules/transaction/manage_transaction.dart';
 
 class ModalFit extends StatelessWidget {
   final bool? isNewCategory;
@@ -42,7 +44,13 @@ class ModalFit extends StatelessWidget {
                 ),
                 const SizedBox(height: 32),
                 if (isNewCategory == true)
-                  const ManageCategory()
+                  // const ManageCategory()
+                  ManageCategoryModule().getPage(
+                    '/category/manage-category',
+                    context,
+                  )
+                // ManageCategory(controller: context.read())
+                // Navigator.of(context).pushNamed('/manage-category')
                 else
                   const ManageTransaction(),
               ],

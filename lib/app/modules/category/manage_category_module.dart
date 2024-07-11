@@ -1,16 +1,15 @@
 import 'package:provider/provider.dart';
 import 'package:saldo_sabio/app/core/modules/sd_sb_module.dart';
-import 'package:saldo_sabio/app/modules/home/home_page.dart';
+import 'package:saldo_sabio/app/modules/category/manage_category.dart';
 import 'package:saldo_sabio/app/repositories/category/category_repository.dart';
 import 'package:saldo_sabio/app/repositories/category/category_repository_impl.dart';
 import 'package:saldo_sabio/app/services/category/category_service.dart';
 import 'package:saldo_sabio/app/services/category/category_service_impl.dart';
 
-class HomeModule extends SdSbModule {
-  HomeModule()
+class ManageCategoryModule extends SdSbModule {
+  ManageCategoryModule()
       : super(
           bindings: [
-            // Provider(create: (_) => Object()),
             Provider<CategoryRepository>(
               create: (context) => CategoryRepositoryImpl(
                 sqlConnectionFactory: context.read(),
@@ -20,10 +19,12 @@ class HomeModule extends SdSbModule {
               create: (context) => CategoryServiceImpl(
                 categoryRepository: context.read(),
               ),
-            )
+            ),
           ],
           routers: {
-            '/home': (_) => const HomePage(),
+            '/category/manage-category': (context) => ManageCategory(
+                  controller: context.read()
+                ),
           },
         );
 }
