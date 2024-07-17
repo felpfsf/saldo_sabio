@@ -5,6 +5,7 @@ import 'package:saldo_sabio/app/core/navigators/sd_sb_navigator.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/modules/auth/auth_module.dart';
+import 'package:saldo_sabio/app/modules/category/manage_category_module.dart';
 import 'package:saldo_sabio/app/modules/home/home_module.dart';
 import 'package:saldo_sabio/app/modules/splash/splash_screen.dart';
 
@@ -44,6 +45,7 @@ class _AppWidgetState extends State<AppWidget> {
         routes: {
           ...AuthModule().routers,
           ...HomeModule().routers,
+          ...ManageCategoryModule().routers,
         },
       ),
     );
