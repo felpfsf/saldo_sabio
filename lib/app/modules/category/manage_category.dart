@@ -24,13 +24,8 @@ class _ManageCategoryState extends State<ManageCategory> {
   final titleEC = TextEditingController();
 
   @override
-  void dispose() {
-    titleEC.dispose();
-    super.dispose();
-  }
-
-  @override
   void initState() {
+    super.initState();
     final sdsbListenerNotifier =
         SdSbListenerNotifier(sdsbNotifier: widget._controller);
     sdsbListenerNotifier.listener(
@@ -41,7 +36,12 @@ class _ManageCategoryState extends State<ManageCategory> {
         Navigator.of(context).pop();
       },
     );
-    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    titleEC.dispose();
   }
 
   void _saveCategory() {
@@ -52,7 +52,9 @@ class _ManageCategoryState extends State<ManageCategory> {
         log('Formulário inválido');
         break;
       case true:
-        widget._controller.addCategory(titleEC.text);
+        final title = titleEC.text.trim();
+        widget._controller.addCategory(title);
+        Navigator.of(context).pop();
     }
   }
 

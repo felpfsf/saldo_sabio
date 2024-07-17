@@ -21,7 +21,7 @@ class MigrationV1 extends Migrations {
         description TEXT NOT NULL,
         amount REAL NOT NULL,
         date DATETIME NOT NULL,
-        FOREIGN KEY (category_id) REFERENCES category(id)
+        FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE ON UPDATE NO ACTION
       )
     ''');
   }
@@ -30,3 +30,4 @@ class MigrationV1 extends Migrations {
   void update(Batch batch) {
   }
 }
+

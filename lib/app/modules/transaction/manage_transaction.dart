@@ -1,15 +1,22 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_dropdown.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
+import 'package:saldo_sabio/app/models/category_model.dart';
 import 'package:saldo_sabio/app/models/record_type_enum.dart';
-import 'package:saldo_sabio/app/modules/home/widgets/mocked_data.dart';
+import 'package:saldo_sabio/app/modules/transaction/manage_transaction_controller.dart';
 
 class ManageTransaction extends StatefulWidget {
-  const ManageTransaction({super.key});
+  final ManageTransactionController _controller;
+
+  const ManageTransaction({
+    super.key,
+    required ManageTransactionController controller,
+  }) : _controller = controller;
 
   @override
   State<ManageTransaction> createState() => _ManageTransactionState();
@@ -29,6 +36,12 @@ class _ManageTransactionState extends State<ManageTransaction> {
   );
 
   RecordTypeEnum _selectedTransactionType = RecordTypeEnum.income;
+
+  @override
+  void initState() {
+    super.initState();
+    widget._controller.getCategories();
+  }
 
   @override
   void dispose() {
@@ -62,6 +75,15 @@ class _ManageTransactionState extends State<ManageTransaction> {
 
   @override
   Widget build(BuildContext context) {
+    final categories = context
+        .select<ManageTransactionController, List<CategoryModel>>(
+            (controller) => controller.categories)
+        .map((t) => {
+              'id': t.id,
+              'label': t.title,
+            })
+        .toList();
+
     return Form(
       key: formKey,
       child: Column(
@@ -84,7 +106,7 @@ class _ManageTransactionState extends State<ManageTransaction> {
           ),
           const SizedBox(height: 12),
           SdSbDropdown(
-            items: mockedCategories,
+            items: categories,
             selectedVN: _selectedCategoryVN,
             hintText: 'Categoria',
           ),
