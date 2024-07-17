@@ -1,12 +1,39 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:saldo_sabio/app/core/notifier/sd_sb_listener_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_appbar.dart';
+import 'package:saldo_sabio/app/modules/home/home_controller.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_drawer.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_home_header.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_summary_card_row.dart';
 import 'package:saldo_sabio/app/modules/home/widgets/sd_sb_transactions.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  final HomeController _homeController;
+
+  const HomePage({
+    super.key,
+    required HomeController homeController,
+  }) : _homeController = homeController;
+
+  // const HomePage({super.key});rHomeController
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    SdSbListenerNotifier(sdsbNotifier: widget._homeController).listener(
+      context: context,
+      onSuccess: (notifier, listener) {
+        log('🚀 Success');
+        listener.dispose();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
