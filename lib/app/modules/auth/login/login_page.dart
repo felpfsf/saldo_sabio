@@ -27,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
+    super.initState();
     SdSbListenerNotifier(sdsbNotifier: context.read<LoginController>())
         .listener(
       context: context,
@@ -42,14 +43,13 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
     );
-    super.initState();
   }
 
   @override
   void dispose() {
+    super.dispose();
     _emailEC.dispose();
     passwordEC.dispose();
-    super.dispose();
   }
 
   void _onSubmit() {

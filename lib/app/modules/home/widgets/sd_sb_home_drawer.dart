@@ -7,6 +7,10 @@ import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_avatar.dart';
 class SdSbDrawer extends StatelessWidget {
   const SdSbDrawer({super.key});
 
+  void _logout(BuildContext context) {
+    context.read<SdSbAuthProvider>().logout();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -43,6 +47,11 @@ class SdSbDrawer extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          ListTile(
+            onTap: () => _logout(context),
+            title: const Text('Logout', style: TextStyle(color: Colors.white)),
+            leading: const Icon(Icons.logout),
           ),
         ],
       ),

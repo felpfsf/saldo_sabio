@@ -1,5 +1,5 @@
-import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:saldo_sabio/app/core/notifier/sd_sb_change_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/helpers/messages.dart';
 
@@ -37,9 +37,9 @@ class SdSbListenerNotifier {
       }
 
       if (sdsbNotifier.isLoading) {
-        AsyncLoaderHandler().start();
+        context.loaderOverlay.show();
       } else {
-        AsyncLoaderHandler().close();
+        context.loaderOverlay.hide();
       }
 
       if (sdsbNotifier.hasError) {

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:saldo_sabio/app/core/navigators/sd_sb_nav_global_key.dart';
+import 'package:saldo_sabio/app/core/navigators/sd_sb_navigator.dart';
 import 'package:saldo_sabio/app/services/user/user_service.dart';
 
 class SdSbAuthProvider extends ChangeNotifier {
@@ -20,12 +20,12 @@ class SdSbAuthProvider extends ChangeNotifier {
     _auth.userChanges().listen((_) => notifyListeners());
     _auth.authStateChanges().listen((user) {
       if (user != null) {
-        SdobNavGlobalKey.navKey.currentState?.pushNamedAndRemoveUntil(
+        SdSbNavigator.to.pushNamedAndRemoveUntil(
           '/home',
           (route) => false,
         );
       } else {
-        SdobNavGlobalKey.navKey.currentState?.pushNamedAndRemoveUntil(
+        SdSbNavigator.to.pushNamedAndRemoveUntil(
           '/login',
           (route) => false,
         );

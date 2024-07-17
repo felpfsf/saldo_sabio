@@ -1,7 +1,7 @@
-import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 import 'package:saldo_sabio/app/core/database/sql_adm_connection.dart';
-import 'package:saldo_sabio/app/core/navigators/sd_sb_nav_global_key.dart';
+import 'package:saldo_sabio/app/core/navigators/sd_sb_navigator.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/modules/auth/auth_module.dart';
@@ -9,7 +9,6 @@ import 'package:saldo_sabio/app/modules/category/manage_category_module.dart';
 import 'package:saldo_sabio/app/modules/home/home_module.dart';
 // ignore: unused_import
 import 'package:saldo_sabio/app/modules/showcase/showcase_components_page.dart';
-import 'package:saldo_sabio/app/modules/showcase/showcase_module.dart';
 import 'package:saldo_sabio/app/modules/splash/splash_screen.dart';
 
 class AppWidget extends StatefulWidget {
@@ -36,24 +35,23 @@ class _AppWidgetState extends State<AppWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return AsyncStateBuilder(
-      customLoader: const SdSbLoader(),
-      builder: (navigatorObserver) {
-        return MaterialApp(
-          theme: SaldoSabioTheme.themeData,
-          navigatorObservers: [navigatorObserver],
-          navigatorKey: SdobNavGlobalKey.navKey,
-          title: 'Saldo Sábio',
-          // home: const ShowcaseComponentsPage(),
-          home: const SplashPage(),
-          routes: {
-            ...ShowcaseModule().routers,
-            ...HomeModule().routers,
-            ...AuthModule().routers,
-            ...ManageCategoryModule().routers,
-          },
-        );
-      },
+    return GlobalLoaderOverlay(
+      useDefaultLoading: false,
+      overlayWidgetBuilder: (_) => const SdSbLoader(),
+      overlayColor: Colors.transparent,
+      child: MaterialApp(
+        theme: SaldoSabioTheme.themeData,
+        navigatorKey: SdSbNavigator.navigatorKey,
+        title: 'Saldo Sábio',
+        // home: const ShowcaseComponentsPage(),
+        home: const SplashPage(),
+        routes: {
+          // ...ShowcaseModule().routers,
+          ...HomeModule().routers,
+          ...AuthModule().routers,
+          ...ManageCategoryModule().routers,
+        },
+      ),
     );
   }
 }
