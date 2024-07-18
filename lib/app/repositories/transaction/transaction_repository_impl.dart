@@ -29,11 +29,11 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
       debugPrint(transaction.toString());
 
-      await con.insert('transaction', {
+      await con.insert('transactions', {
         'title': transaction.title,
         'description': transaction.description,
         'amount': transaction.amount,
-        'record_type': transaction.recordType.toString(),
+        'record_type': transaction.recordType.toShortString(),
         'date': transaction.date.toIso8601String(),
         'category_id': transaction.categoryId,
       });

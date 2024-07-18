@@ -14,20 +14,19 @@ class MigrationV1 extends Migrations {
 
     // Transaction table
     batch.execute('''
-      CREATE TABLE IF NOT EXISTS transaction (
+      CREATE TABLE IF NOT EXISTS transactions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         category_id INTEGER NOT NULL,
         title VARCHAR(255) NOT NULL,
-        description TEXT NOT NULL,
+        description VARCHAR(255) NOT NULL,
         amount REAL NOT NULL,
         date DATETIME NOT NULL,
+        record_type TEXT NOT NULL,
         FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE ON UPDATE NO ACTION
       )
     ''');
   }
 
   @override
-  void update(Batch batch) {
-  }
+  void update(Batch batch) {}
 }
-

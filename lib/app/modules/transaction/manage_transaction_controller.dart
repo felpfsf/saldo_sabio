@@ -81,8 +81,9 @@ class ManageTransactionController extends SdSbChangeNotifier {
 
       success();
     } on TransactionException catch (e, s) {
-      log('❌ Erro ao salvar transação', error: e, stackTrace: s);
-      setError('Erro ao salvar transação ${e.message}');
+      log('❌ TransactionException - Erro ao salvar transação',
+          error: e, stackTrace: s);
+      setError('TransactionException - Erro ao salvar transação ${e.message}');
     } catch (e, s) {
       log('❌ Erro ao salvar transação', error: e, stackTrace: s);
       setError('Erro ao salvar transação ${e.toString()}');

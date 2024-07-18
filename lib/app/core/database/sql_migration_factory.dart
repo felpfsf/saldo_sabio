@@ -9,8 +9,8 @@ class SqlMigrationFactory {
   List<Migrations> getUpdateMigrations(int version) {
     final migrations = <Migrations>[];
 
-    if (version == 1) {
-      migrations.add(MigrationV1());
+    if (version == 2) {
+      // migrations.add(MigrationV2());
     }
 
     return migrations;
