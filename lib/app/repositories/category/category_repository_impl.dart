@@ -25,4 +25,18 @@ class CategoryRepositoryImpl implements CategoryRepository {
 
     return result.map((e) => CategoryModel.fromMap(e)).toList();
   }
+
+  @override
+  Future<CategoryModel?> getCategoryById(int id) async {
+    final con = await _sqlConnectionFactory.openConnection();
+
+    final result =
+        await con.rawQuery('SELECT * FROM category WHERE id = ?', [id]);
+
+    if (result.isEmpty) {
+      throw Exception('Categoria não encontrada');
+    }
+
+    return CategoryModel.fromMap(result.first);
+  }
 }

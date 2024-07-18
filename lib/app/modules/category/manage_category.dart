@@ -54,7 +54,7 @@ class _ManageCategoryState extends State<ManageCategory> {
       case true:
         final title = titleEC.text.trim();
         widget._controller.addCategory(title);
-        Navigator.of(context).pop();
+      // Navigator.of(context).pop();
     }
   }
 
@@ -67,9 +67,11 @@ class _ManageCategoryState extends State<ManageCategory> {
           SdSbFormField(
             label: 'Nome da categoria',
             controller: titleEC,
-            validator: Validatorless.min(
-              3,
-              'Deve ter no mínimo 3 caracteres',
+            validator: Validatorless.multiple(
+              [
+                Validatorless.required('Campo obrigatório'),
+                Validatorless.min(3, 'Deve ter no mínimo 3 caracteres'),
+              ],
             ),
           ),
           const SizedBox(height: 20),

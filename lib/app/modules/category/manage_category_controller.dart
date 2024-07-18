@@ -16,7 +16,7 @@ class ManageCategoryController extends SdSbChangeNotifier {
       notifyListeners();
 
       if (title.isEmpty) {
-        setError('Titlue não pode estar vazio');
+        setError('Título não pode estar vazio');
         return;
       }
 

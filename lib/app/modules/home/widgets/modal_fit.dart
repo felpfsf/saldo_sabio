@@ -17,7 +17,7 @@ class ModalFit extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        double heightFactor = isNewCategory == true ? 0.5 : 0.75;
+        double heightFactor = isNewCategory == true ? 0.5 : 0.85;
 
         return Container(
           constraints: BoxConstraints(
