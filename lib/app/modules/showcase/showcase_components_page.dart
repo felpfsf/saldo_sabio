@@ -6,8 +6,6 @@ import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_loader.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_logo.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_selector.dart';
-import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_summary_card.dart';
-import 'package:saldo_sabio/app/models/summary_type.dart';
 
 class ShowcaseComponentsPage extends StatelessWidget {
   const ShowcaseComponentsPage({super.key});
@@ -110,9 +108,9 @@ class ShowcaseComponentsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              Column(
+              const Column(
                 children: [
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   // SdSbSummaryCard(
                   //   lastEntry: DateTime.now(),
                   //   totalAmount: 141243.21,
@@ -130,7 +128,7 @@ class ShowcaseComponentsPage extends StatelessWidget {
                   //   totalAmount: 141243.21,
                   //   summaryType: SummaryType.total,
                   // ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20),
                   // const SdSbTransactionsCard(
                   //   amount: 14000,
                   //   category: 'Venda',
