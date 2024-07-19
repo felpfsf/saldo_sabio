@@ -12,14 +12,19 @@ class Transactions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final totalTransactions = context
+        .select<HomeController, List<TransactionModel>>(
+          (c) => c.allTransactions,
+        )
+        .length;
     return Expanded(
       child: Column(
         children: [
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Transações'),
-              Text('4 items'),
+              const Text('Transações'),
+              Text('$totalTransactions items'),
             ],
           ),
           const SizedBox(height: 12),
