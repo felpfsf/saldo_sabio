@@ -34,6 +34,7 @@ class ManageTransactionModule extends SdSbModule {
               create: (context) => TransactionServiceImpl(
                 transactionRepository: context.read(),
                 categoryRepository: context.read(),
+                userRepository: context.read(),
               ),
             ),
             ChangeNotifierProvider(

@@ -113,23 +113,23 @@ class ShowcaseComponentsPage extends StatelessWidget {
               Column(
                 children: [
                   const SizedBox(height: 20),
-                  SdSbSummaryCard(
-                    lastEntry: DateTime.now(),
-                    totalAmount: 141243.21,
-                    summaryType: SummaryType.income,
-                  ),
-                  const SizedBox(height: 20),
-                  SdSbSummaryCard(
-                    lastEntry: DateTime.now(),
-                    totalAmount: 141243.21,
-                    summaryType: SummaryType.expense,
-                  ),
-                  const SizedBox(height: 20),
-                  SdSbSummaryCard(
-                    lastEntry: DateTime.now(),
-                    totalAmount: 141243.21,
-                    summaryType: SummaryType.total,
-                  ),
+                  // SdSbSummaryCard(
+                  //   lastEntry: DateTime.now(),
+                  //   totalAmount: 141243.21,
+                  //   summaryType: SummaryType.income,
+                  // ),
+                  // const SizedBox(height: 20),
+                  // SdSbSummaryCard(
+                  //   lastEntry: DateTime.now(),
+                  //   totalAmount: 141243.21,
+                  //   summaryType: SummaryType.expense,
+                  // ),
+                  // const SizedBox(height: 20),
+                  // SdSbSummaryCard(
+                  //   lastEntry: DateTime.now(),
+                  //   totalAmount: 141243.21,
+                  //   summaryType: SummaryType.total,
+                  // ),
                   const SizedBox(height: 20),
                   // const SdSbTransactionsCard(
                   //   amount: 14000,

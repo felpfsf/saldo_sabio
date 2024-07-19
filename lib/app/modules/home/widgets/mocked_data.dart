@@ -5,6 +5,7 @@ import 'package:saldo_sabio/app/models/transaction_model.dart';
 List<TransactionModel> mockedTransactions = [
   TransactionModel(
     id: 1,
+    userId: '1',
     title: 'Desenvolvimento de aplicação',
     description: 'Desenvolvimento de aplicação',
     amount: 4600,
@@ -17,6 +18,7 @@ List<TransactionModel> mockedTransactions = [
   ),
   TransactionModel(
     id: 2,
+    userId: '1',
     title: 'Almoço',
     description: 'Almoço',
     amount: 65,
@@ -29,6 +31,7 @@ List<TransactionModel> mockedTransactions = [
   ),
   TransactionModel(
     id: 3,
+    userId: '1',
     title: 'Salário',
     description: 'Salário',
     amount: 14000,

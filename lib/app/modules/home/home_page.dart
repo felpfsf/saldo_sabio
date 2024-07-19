@@ -33,6 +33,12 @@ class _HomePageState extends State<HomePage> {
         listener.dispose();
       },
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget._homeController.loadTransactions();
+    });
+
+    widget._homeController.loadTransactions();
   }
 
   @override

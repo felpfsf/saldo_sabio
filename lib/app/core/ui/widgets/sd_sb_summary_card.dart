@@ -4,41 +4,42 @@ import 'package:saldo_sabio/app/core/ui/helpers/currency_formatter.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_colors.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_theme.dart';
-import 'package:saldo_sabio/app/models/summary_type.dart';
+import 'package:saldo_sabio/app/models/record_type_enum.dart';
+import 'package:saldo_sabio/app/models/summary_transaction_model.dart';
 
 class SdSbSummaryCard extends StatelessWidget {
-  final DateTime lastEntry;
+  // final DateTime lastEntry;
   // final String totalAmount;
-  final SummaryType summaryType;
-  final double totalAmount;
+  // final SummaryType summaryType;
+  // final double totalAmount;
+  final SummaryTransactionModel? transactions;
 
   SdSbSummaryCard({
     super.key,
-    required this.lastEntry,
-    required this.totalAmount,
-    required this.summaryType,
+    // required this.lastEntry,
+    // required this.totalAmount,
+    // required this.summaryType,
+    required this.transactions,
   });
 
   final dateFormat = DateFormat('dd/MM/yyyy');
 
   String get title {
-    switch (summaryType) {
-      case SummaryType.total:
-        return 'Total';
-      case SummaryType.income:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
         return 'Entradas';
-      case SummaryType.expense:
+      case RecordTypeEnum.expense:
         return 'Saídas';
       default:
-        return '';
+        return 'Total';
     }
   }
 
   IconData get icon {
-    switch (summaryType) {
-      case SummaryType.income:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
         return SdSbIcons.arrowCircleUp;
-      case SummaryType.expense:
+      case RecordTypeEnum.expense:
         return SdSbIcons.arrowCircleDown;
       default:
         return SdSbIcons.dollarSign;
@@ -46,25 +47,21 @@ class SdSbSummaryCard extends StatelessWidget {
   }
 
   Color get iconColor {
-    switch (summaryType) {
-      case SummaryType.income:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
         return SdSbThemeColors.green;
-      case SummaryType.expense:
+      case RecordTypeEnum.expense:
         return SdSbThemeColors.red;
-      case SummaryType.total:
-        return SdSbThemeColors.white;
       default:
         return SdSbThemeColors.white;
     }
   }
 
   Color get titleColor {
-    switch (summaryType) {
-      case SummaryType.total:
-        return SdSbThemeColors.white;
-      case SummaryType.income:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
         return SdSbThemeColors.green;
-      case SummaryType.expense:
+      case RecordTypeEnum.expense:
         return SdSbThemeColors.red;
       default:
         return SdSbThemeColors.white;
@@ -72,31 +69,30 @@ class SdSbSummaryCard extends StatelessWidget {
   }
 
   Color? get lastEntryColor {
-    switch (summaryType) {
-      case SummaryType.total:
-        return SdSbThemeColors.gray6;
-      case SummaryType.income:
-      case SummaryType.expense:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
+      case RecordTypeEnum.expense:
         return null;
       default:
-        return SdSbThemeColors.white;
+        return SdSbThemeColors.gray6;
     }
   }
 
   Color get bgColor {
-    switch (summaryType) {
-      case SummaryType.total:
-        return SdSbThemeColors.green;
-      case SummaryType.income:
-      case SummaryType.expense:
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
+      case RecordTypeEnum.expense:
         return SdSbThemeColors.gray3;
       default:
-        return SdSbThemeColors.gray3;
+        return SdSbThemeColors.green;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final shouldShowLastEntry =
+        transactions?.recordType != RecordTypeEnum.expense &&
+            transactions?.recordType != RecordTypeEnum.income;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
@@ -117,6 +113,7 @@ class SdSbSummaryCard extends StatelessWidget {
           width: 280,
           child: Padding(
             padding: const EdgeInsets.all(20),
+            // TODO: Add a empty state when there is no transactions
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -141,13 +138,13 @@ class SdSbSummaryCard extends StatelessWidget {
                 ),
                 Text(
                   // fo.symbolOnLeft,
-                  formatCurrency(totalAmount),
+                  formatCurrency(transactions?.totalAmount ?? 0),
                   style: SaldoSabioTheme.textXlBold,
                 ),
                 Visibility(
-                  visible: summaryType != SummaryType.total,
+                  visible: !shouldShowLastEntry,
                   child: Text(
-                    'Última atualização em ${dateFormat.format(lastEntry)}',
+                    'Última atualização em ${dateFormat.format(transactions?.lastEntryDate ?? DateTime.now())}',
                     style: SaldoSabioTheme.textSmRegular.copyWith(
                       color: lastEntryColor,
                     ),

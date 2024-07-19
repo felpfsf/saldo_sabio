@@ -3,6 +3,7 @@ import 'package:saldo_sabio/app/models/record_type_enum.dart';
 
 class TransactionModel {
   final int id;
+  final String userId;
   final String title;
   final String description;
   final double amount;
@@ -12,6 +13,7 @@ class TransactionModel {
 
   TransactionModel({
     required this.id,
+    required this.userId,
     required this.title,
     required this.description,
     required this.amount,
@@ -23,17 +25,23 @@ class TransactionModel {
   factory TransactionModel.fromMap(Map<String, dynamic> map) {
     return TransactionModel(
       id: map['id'] as int,
+      userId: map['user_id'] as String,
       title: map['title'] as String,
       description: map['description'] as String,
       amount: map['amount'] as double,
       date: DateTime.parse(map['date'] as String),
-      category: CategoryModel.fromMap(map['category'] as Map<String, dynamic>),
-      recordType: RecordTypeEnum.values[map['recordType'] as int],
+      category: CategoryModel(
+        id: map['category_id'] as int,
+        title: map['category_title'] as String,
+      ),
+      recordType: RecordTypeEnum.values
+          .firstWhere((e) => e.toShortString() == map['record_type']),
     );
   }
 
   TransactionModel copyWith({
     int? id,
+    String? userId,
     String? title,
     String? description,
     double? amount,
@@ -43,6 +51,7 @@ class TransactionModel {
   }) {
     return TransactionModel(
       id: id ?? this.id,
+      userId: userId ?? this.userId,
       title: title ?? this.title,
       description: description ?? this.description,
       amount: amount ?? this.amount,
