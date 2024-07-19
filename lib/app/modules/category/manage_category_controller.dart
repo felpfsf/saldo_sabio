@@ -21,6 +21,8 @@ class ManageCategoryController extends SdSbChangeNotifier {
       }
 
       await _categoryService.addCategory(title);
+
+      success();
     } catch (e, s) {
       log('Erro ao adicionar categoria: $e $s');
       setError('Erro ao adicionar categoria');
