@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:saldo_sabio/app/core/notifier/sd_sb_change_notifier.dart';
 import 'package:saldo_sabio/app/models/record_type_enum.dart';
 import 'package:saldo_sabio/app/models/summary_transaction_model.dart';
@@ -34,6 +36,17 @@ class HomeController extends SdSbChangeNotifier {
   Future<void> refreshTransactions() async {
     showLoading();
     await loadTransactions();
+
+    hideLoading();
+    notifyListeners();
+  }
+
+  Future<void> searchTransactions(String searchTerm) async {
+    showLoading();
+
+    final results = await _transactionService.searchTransactions(searchTerm);
+
+    allTransactions = results;
 
     hideLoading();
     notifyListeners();

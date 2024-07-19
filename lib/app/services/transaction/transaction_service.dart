@@ -13,4 +13,5 @@ abstract interface class TransactionService {
         String userId,
       }) transaction);
   Future<List<TransactionModel>> getTransactions();
+  Future<List<TransactionModel>> searchTransactions(String searchTerm);
 }

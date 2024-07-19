@@ -65,8 +65,26 @@ class TransactionRepositoryImpl implements TransactionRepository {
     ''';
 
     final result = await con.rawQuery(sql, [userId]);
-    print("🚀 ~ TransactionRepositoryImpl ~ $result");
 
+    return result.map((row) => TransactionModel.fromMap(row)).toList();
+  }
+
+  @override
+  Future<List<TransactionModel>> searchTransactions(
+      String userId, String searchTerm) async {
+    final con = await _sqliteConnectionFactory.openConnection();
+
+    const sql = '''
+      SELECT t.*, 
+      c.id as category_id, c.title as category_title
+      FROM transactions t
+      JOIN category c ON t.category_id = c.id
+      WHERE user_id = ?
+      AND t.title LIKE '%' || ? || '%'
+      ORDER BY date DESC
+    ''';
+
+    final result = await con.rawQuery(sql, [userId, searchTerm]);
 
     return result.map((row) => TransactionModel.fromMap(row)).toList();
   }

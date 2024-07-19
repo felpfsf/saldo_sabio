@@ -15,4 +15,5 @@ abstract interface class TransactionRepository {
 
   Future<void> deleteTransaction(int id);
   Future<List<TransactionModel>> getTransactions(String userId);
+  Future<List<TransactionModel>> searchTransactions(String userId, String searchTerm);
 }

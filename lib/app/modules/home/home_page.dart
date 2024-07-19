@@ -75,13 +75,13 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: const IntrinsicHeight(
+                child: IntrinsicHeight(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SdSbHomeHeader(),
-                      SummaryCardRow(),
-                      SizedBox(height: 24),
+                      const SdSbHomeHeader(),
+                      const SummaryCardRow(),
+                      const SizedBox(height: 24),
                       Transactions(),
                     ],
                   ),

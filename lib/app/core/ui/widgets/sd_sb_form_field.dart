@@ -16,6 +16,7 @@ class SdSbFormField extends StatelessWidget {
   final FormFieldValidator<String>? validator;
   final FloatingLabelBehavior floatingLabelBehavior;
   final List<TextInputFormatter>? inputFormatter;
+  final ValueChanged<String>? onChanged;
 
   SdSbFormField({
     super.key,
@@ -29,6 +30,7 @@ class SdSbFormField extends StatelessWidget {
     this.validator,
     this.floatingLabelBehavior = FloatingLabelBehavior.auto,
     this.inputFormatter,
+    this.onChanged,
   })  : assert(
           obscureText == true ? iconButton == null : true,
           'Icon button must be null if obscure text is true',
@@ -45,6 +47,7 @@ class SdSbFormField extends StatelessWidget {
       valueListenable: obscureTextNotifier,
       builder: (context, obscureTextValue, child) {
         return TextFormField(
+          onChanged: onChanged,
           inputFormatters: inputFormatter,
           keyboardType: keyboardType,
           controller: controller,

@@ -51,4 +51,14 @@ class TransactionServiceImpl implements TransactionService {
 
     return _transactionRepository.getTransactions(user.uid);
   }
+
+  @override
+  Future<List<TransactionModel>> searchTransactions(String searchTerm) async {
+    final user = await _userRepository.getUser();
+
+    if (user == null) {
+      throw TransactionError(message: 'Usuário não encontrado');
+    }
+    return _transactionRepository.searchTransactions(user.uid, searchTerm);
+  }
 }
