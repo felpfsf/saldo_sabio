@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:saldo_sabio/app/core/ui/theme/sd_sb_icons.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
+import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_transactions_card.dart';
+import 'package:saldo_sabio/app/models/transaction_model.dart';
+import 'package:saldo_sabio/app/modules/home/home_controller.dart';
 
 class Transactions extends StatelessWidget {
   const Transactions({super.key});
@@ -38,23 +42,14 @@ class Transactions extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          // Column(
-          //   children: mockedTransactions
-          //       .map(
-          //         (transaction) => SdSbTransactionsCard(
-          //           transaction: transaction,
-          //         ),
-          //       )
-          //       .toList(),
-          // )
-          // Column(
-          //   children: context
-          //       .select<HomeController, List<TransactionModel>>(
-          //         (controller) => controller.incomeTransactions,
-          //       )
-          //       .map((t) => Text(t.title))
-          //       .toList(),
-          // )
+          Column(
+            children: context
+                .select<HomeController, List<TransactionModel>>(
+                  (controller) => controller.allTransactions,
+                )
+                .map((t) => SdSbTransactionsCard(transaction: t))
+                .toList(),
+          ),
         ],
       ),
     );

@@ -6,7 +6,6 @@ import 'package:saldo_sabio/app/services/category/category_service.dart';
 import 'package:saldo_sabio/app/services/transaction/transaction_service.dart';
 
 class HomeController extends SdSbChangeNotifier {
-  final CategoryService _categoryService;
   final TransactionService _transactionService;
 
   SummaryTransactionModel? incomeTransactions;
@@ -18,14 +17,16 @@ class HomeController extends SdSbChangeNotifier {
   HomeController({
     required CategoryService categoryService,
     required TransactionService transactionService,
-  })  : _categoryService = categoryService,
-        _transactionService = transactionService;
+  }) : _transactionService = transactionService;
 
   Future<void> loadTransactions() async {
     final transactions = await _transactionService.getTransactions();
 
     expenseTransactions = calculateExpenseTransactions(transactions);
     incomeTransactions = calculateIncomeTransactions(transactions);
+    totalTransactions = calculateTotalTransactions(transactions);
+
+    allTransactions = transactions;
 
     notifyListeners();
   }
