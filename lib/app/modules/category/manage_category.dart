@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:saldo_sabio/app/core/notifier/sd_sb_listener_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
@@ -21,19 +19,20 @@ class ManageCategory extends StatefulWidget {
 
 class _ManageCategoryState extends State<ManageCategory> {
   final formKey = GlobalKey<FormState>();
-  final titleEC = TextEditingController(text: 'Teste #1');
+  final titleEC = TextEditingController(text: 'Categoria #1');
 
   @override
   void initState() {
     super.initState();
-    final sdsbListenerNotifier =
-        SdSbListenerNotifier(sdsbNotifier: widget._controller);
-    sdsbListenerNotifier.listener(
+
+    SdSbListenerNotifier(sdsbNotifier: widget._controller).listener(
       context: context,
       onSuccess: (notifier, listener) {
-        log('Success');
         listener.dispose();
         Navigator.of(context).pop();
+      },
+      onError: (notifier, listener) {
+        listener.dispose();
       },
     );
   }
@@ -49,12 +48,11 @@ class _ManageCategoryState extends State<ManageCategory> {
 
     switch (formValid) {
       case false:
-        log('Formulário inválido');
         break;
       case true:
         final title = titleEC.text.trim();
+
         widget._controller.addCategory(title);
-      // Navigator.of(context).pop();
     }
   }
 
