@@ -9,5 +9,6 @@ abstract interface class TransactionRepository {
         RecordTypeEnum recordType,
         DateTime date,
         int categoryId,
+        String userId,
       }) transaction);
 }

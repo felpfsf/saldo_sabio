@@ -9,5 +9,6 @@ abstract interface class TransactionService {
         RecordTypeEnum recordType,
         DateTime date,
         int categoryId,
+        String userId,
       }) transaction);
 }

@@ -51,6 +51,7 @@ class ManageTransactionController extends SdSbChangeNotifier {
     required String description,
     required num amount,
     required RecordTypeEnum recordType,
+    required String userId,
   }) async {
     try {
       showLoadingAdnResetState();
@@ -73,9 +74,8 @@ class ManageTransactionController extends SdSbChangeNotifier {
         recordType: recordType,
         date: pickedDate!,
         categoryId: _selectedCategoryVN.value!,
+        userId: userId,
       );
-
-      debugPrint(transactionDTO.toString());
 
       await _transactionService.saveTransaction(transactionDTO);
 

@@ -17,8 +17,9 @@ class MigrationV1 extends Migrations {
       CREATE TABLE IF NOT EXISTS transactions (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         category_id INTEGER NOT NULL,
+        user_id TEXT NOT NULL,
         title VARCHAR(255) NOT NULL,
-        description VARCHAR(255) NOT NULL,
+        description VARCHAR(255),
         amount REAL NOT NULL,
         date DATETIME NOT NULL,
         record_type TEXT NOT NULL,

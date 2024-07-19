@@ -21,7 +21,7 @@ class ManageCategory extends StatefulWidget {
 
 class _ManageCategoryState extends State<ManageCategory> {
   final formKey = GlobalKey<FormState>();
-  final titleEC = TextEditingController();
+  final titleEC = TextEditingController(text: 'Teste #1');
 
   @override
   void initState() {

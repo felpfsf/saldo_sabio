@@ -24,6 +24,7 @@ class TransactionServiceImpl implements TransactionService {
         RecordTypeEnum recordType,
         DateTime date,
         int categoryId,
+        String userId,
       }) transaction) async {
     final category =
         await _categoryRepository.getCategoryById(transaction.categoryId);

@@ -23,6 +23,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
         RecordTypeEnum recordType,
         DateTime date,
         int categoryId,
+        String userId,
       }) transaction) async {
     try {
       final con = await _sqliteConnectionFactory.openConnection();
@@ -36,6 +37,7 @@ class TransactionRepositoryImpl implements TransactionRepository {
         'record_type': transaction.recordType.toShortString(),
         'date': transaction.date.toIso8601String(),
         'category_id': transaction.categoryId,
+        'user_id': transaction.userId,
       });
     } catch (e, s) {
       log('❌ Erro ao salvar transação', error: e, stackTrace: s);

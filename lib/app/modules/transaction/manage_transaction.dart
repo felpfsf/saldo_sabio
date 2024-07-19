@@ -4,6 +4,7 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:saldo_sabio/app/core/auth/sd_sb_auth_provider.dart';
 import 'package:saldo_sabio/app/core/notifier/sd_sb_listener_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/helpers/format_date.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
@@ -95,12 +96,14 @@ class _ManageTransactionState extends State<ManageTransaction> {
         final title = titleEC.text;
         final description = descriptionEC.text;
         final amount = _currencyFormatter.getUnformattedValue();
+        final currentUserId = context.read<SdSbAuthProvider>().currentUser?.uid;
 
         widget._controller.saveTransaction(
           title: title,
           description: description,
           amount: amount,
           recordType: _selectedTransactionType,
+          userId: currentUserId!,
         );
     }
   }
