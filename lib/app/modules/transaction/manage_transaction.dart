@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -89,12 +87,10 @@ class _ManageTransactionState extends State<ManageTransaction> {
 
     switch (formValid) {
       case false:
-        log('Erro ao validar o formulário');
         break;
       case true:
-        log('Formulário válido');
-        final title = titleEC.text;
-        final description = descriptionEC.text;
+        final title = titleEC.text.trim();
+        final description = descriptionEC.text.trim();
         final amount = _currencyFormatter.getUnformattedValue();
         final currentUserId = context.read<SdSbAuthProvider>().currentUser?.uid;
 
