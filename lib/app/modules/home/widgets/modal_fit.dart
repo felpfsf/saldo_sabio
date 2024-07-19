@@ -18,40 +18,44 @@ class ModalFit extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         double heightFactor = isNewCategory == true ? 0.5 : 0.85;
+        double bottom = MediaQuery.of(context).viewInsets.bottom;
 
-        return Container(
-          constraints: BoxConstraints(
-            maxHeight: constraints.maxHeight * heightFactor,
-          ),
-          width: constraints.maxWidth,
-          padding: const EdgeInsets.all(20),
-          decoration: const BoxDecoration(
-            color: SdSbThemeColors.gray2,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
+        return Padding(
+          padding: EdgeInsets.only(bottom: bottom),
+          child: Container(
+            constraints: BoxConstraints(
+              maxHeight: constraints.maxHeight * heightFactor,
             ),
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  isNewCategory == true ? 'Nova Categoria' : 'Nova Transação',
-                  style: SaldoSabioTheme.textXlBold,
-                ),
-                const SizedBox(height: 32),
-                if (isNewCategory == true)
-                  ManageCategoryModule().getPage(
-                    '/category/manage-category',
-                    context,
-                  )
-                else
-                  ManageTransactionModule().getPage(
-                    '/transaction/manage-transaction',
-                    context,
+            width: constraints.maxWidth,
+            padding: const EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+              color: SdSbThemeColors.gray2,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    isNewCategory == true ? 'Nova Categoria' : 'Nova Transação',
+                    style: SaldoSabioTheme.textXlBold,
                   ),
-              ],
+                  const SizedBox(height: 32),
+                  if (isNewCategory == true)
+                    ManageCategoryModule().getPage(
+                      '/category/manage-category',
+                      context,
+                    )
+                  else
+                    ManageTransactionModule().getPage(
+                      '/transaction/manage-transaction',
+                      context,
+                    ),
+                ],
+              ),
             ),
           ),
         );
