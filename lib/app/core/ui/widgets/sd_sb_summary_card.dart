@@ -8,17 +8,10 @@ import 'package:saldo_sabio/app/models/record_type_enum.dart';
 import 'package:saldo_sabio/app/models/summary_transaction_model.dart';
 
 class SdSbSummaryCard extends StatelessWidget {
-  // final DateTime lastEntry;
-  // final String totalAmount;
-  // final SummaryType summaryType;
-  // final double totalAmount;
   final SummaryTransactionModel? transactions;
 
   SdSbSummaryCard({
     super.key,
-    // required this.lastEntry,
-    // required this.totalAmount,
-    // required this.summaryType,
     required this.transactions,
   });
 
@@ -88,11 +81,23 @@ class SdSbSummaryCard extends StatelessWidget {
     }
   }
 
+  Color get splashColor {
+    switch (transactions?.recordType) {
+      case RecordTypeEnum.income:
+        return SdSbThemeColors.greenLight;
+      case RecordTypeEnum.expense:
+        return SdSbThemeColors.redDark;
+      default:
+        return SdSbThemeColors.greenLight;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final shouldShowLastEntry =
         transactions?.recordType != RecordTypeEnum.expense &&
             transactions?.recordType != RecordTypeEnum.income;
+    final shouldShowEmptyState = transactions?.totalAmount == 0;
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
@@ -104,16 +109,14 @@ class SdSbSummaryCard extends StatelessWidget {
       color: bgColor,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
-        // TODO: Set up a callback to change bg color, icon color and text color OR change border color based on the summary type
+        // TODO: Set up a callback to change the filter showing the transactions based on the record type
         onTap: () {},
-        // TODO: Change splash color based on the summary type
-        splashColor: Colors.amber,
+        splashColor: splashColor,
         child: SizedBox(
           height: 150,
           width: 280,
           child: Padding(
             padding: const EdgeInsets.all(20),
-            // TODO: Add a empty state when there is no transactions
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -136,13 +139,17 @@ class SdSbSummaryCard extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                Text(
-                  // fo.symbolOnLeft,
-                  formatCurrency(transactions?.totalAmount ?? 0),
-                  style: SaldoSabioTheme.textXlBold,
+                Visibility(
+                  visible: !shouldShowEmptyState,
+                  replacement: const Text('Sem transações'),
+                  child: Text(
+                    // fo.symbolOnLeft,
+                    formatCurrency(transactions?.totalAmount ?? 0),
+                    style: SaldoSabioTheme.textXlBold,
+                  ),
                 ),
                 Visibility(
-                  visible: !shouldShowLastEntry,
+                  visible: !shouldShowLastEntry && !shouldShowEmptyState,
                   child: Text(
                     'Última atualização em ${dateFormat.format(transactions?.lastEntryDate ?? DateTime.now())}',
                     style: SaldoSabioTheme.textSmRegular.copyWith(
