@@ -19,6 +19,7 @@ class ManageCategoryModule extends SdSbModule {
             Provider<CategoryService>(
               create: (context) => CategoryServiceImpl(
                 categoryRepository: context.read(),
+                userRepository: context.read(),
               ),
             ),
             ChangeNotifierProvider(

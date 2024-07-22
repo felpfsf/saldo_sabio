@@ -33,6 +33,7 @@ class TransactionModel {
       category: CategoryModel(
         id: map['category_id'] as int,
         title: map['category_title'] as String,
+        userId: map['category_user_id'] as String,
       ),
       recordType: RecordTypeEnum.values
           .firstWhere((e) => e.toShortString() == map['record_type']),

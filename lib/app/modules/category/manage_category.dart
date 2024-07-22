@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:saldo_sabio/app/core/auth/sd_sb_auth_provider.dart';
 import 'package:saldo_sabio/app/core/notifier/sd_sb_listener_notifier.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_button.dart';
 import 'package:saldo_sabio/app/core/ui/widgets/sd_sb_form_field.dart';
@@ -50,9 +52,11 @@ class _ManageCategoryState extends State<ManageCategory> {
       case false:
         break;
       case true:
+        final currentUserId = context.read<SdSbAuthProvider>().currentUser?.uid;
+
         final title = titleEC.text.trim();
 
-        widget._controller.addCategory(title);
+        widget._controller.addCategory(title, currentUserId!);
     }
   }
 

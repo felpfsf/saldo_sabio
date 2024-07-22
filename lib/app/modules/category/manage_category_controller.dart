@@ -10,7 +10,7 @@ class ManageCategoryController extends SdSbChangeNotifier {
     required CategoryService categoryService,
   }) : _categoryService = categoryService;
 
-  Future<void> addCategory(String title) async {
+  Future<void> addCategory(String title, String userId) async {
     try {
       showLoadingAdnResetState();
       notifyListeners();
@@ -20,7 +20,7 @@ class ManageCategoryController extends SdSbChangeNotifier {
         return;
       }
 
-      await _categoryService.addCategory(title);
+      await _categoryService.addCategory(title, userId);
 
       success();
     } catch (e, s) {

@@ -13,6 +13,7 @@ List<TransactionModel> mockedTransactions = [
     category: CategoryModel(
       id: 1,
       title: 'Venda',
+      userId: '1',
     ),
     recordType: RecordTypeEnum.income,
   ),
@@ -26,6 +27,7 @@ List<TransactionModel> mockedTransactions = [
     category: CategoryModel(
       id: 1,
       title: 'Alimentação',
+      userId: '1',
     ),
     recordType: RecordTypeEnum.expense,
   ),
@@ -39,6 +41,7 @@ List<TransactionModel> mockedTransactions = [
     category: CategoryModel(
       id: 1,
       title: 'Salário',
+      userId: '1',
     ),
     recordType: RecordTypeEnum.income,
   ),

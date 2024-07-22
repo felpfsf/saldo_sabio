@@ -57,10 +57,10 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
     const sql = '''
       SELECT t.*, 
-      c.id as category_id, c.title as category_title
+      c.id as category_id, c.title as category_title, c.user_id as category_user_id
       FROM transactions t
       JOIN category c ON t.category_id = c.id
-      WHERE user_id = ?
+      WHERE t.user_id = ?
       ORDER BY date DESC
     ''';
 
@@ -76,10 +76,10 @@ class TransactionRepositoryImpl implements TransactionRepository {
 
     const sql = '''
       SELECT t.*, 
-      c.id as category_id, c.title as category_title
+      c.id as category_id, c.title as category_title, c.user_id as category_user_id
       FROM transactions t
       JOIN category c ON t.category_id = c.id
-      WHERE user_id = ?
+      WHERE t.user_id = ?
       AND t.title LIKE '%' || ? || '%'
       ORDER BY date DESC
     ''';

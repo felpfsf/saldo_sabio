@@ -19,6 +19,7 @@ class SdSbTransactionsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late final isExpense = transaction.recordType == RecordTypeEnum.expense;
+    print(transaction.category.userId);
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),

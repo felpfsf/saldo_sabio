@@ -8,6 +8,7 @@ class MigrationV1 extends Migrations {
     batch.execute('''
       CREATE TABLE IF NOT EXISTS category (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id TEXT NOT NULL,
         title VARCHAR(255) NOT NULL
       )
     ''');
